@@ -1,0 +1,16 @@
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10.*
+  - pip
+  - pip:
+      - vllm==0.17.1
+      - transformers
+      - ipykernel
+      - pandas
+      - datasets
+      - pyyaml-include==1.3.2
+      - yamlize==0.7.1
+      - notebook

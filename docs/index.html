@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="We introduce a unified framework to systematically contrast isolated demographic assessments with forced-choice comparative settings, revealing how evaluation paradigms affect social bias in LLMs.">
+  <meta property="og:title" content="To Compare, or Not to Compare: On Methodological Practices in Evaluating Social Bias"/>
+  <meta property="og:description" content="We introduce a unified framework to systematically contrast isolated demographic assessments with forced-choice comparative settings, revealing how evaluation paradigms affect social bias in LLMs."/>
+  <meta property="og:url" content="https://insait-institute.github.io/to_cmp_or_not_to_cmp/"/>
+  <meta property="og:image" content="https://raw.githubusercontent.com/insait-institute/to_cmp_or_not_to_cmp/refs/heads/master/docs/static/images/social.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="To Compare, or Not to Compare: On Methodological Practices in Evaluating Social Bias">
+  <meta name="twitter:description" content="We introduce a unified framework to systematically contrast isolated demographic assessments with forced-choice comparative settings, revealing how evaluation paradigms affect social bias in LLMs.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/insait-institute/to_cmp_or_not_to_cmp/refs/heads/master/docs/static/images/social_x.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="large language model, LLM, social bias, fairness, bias evaluation, evaluation methodology, comparative setting, isolated setting, chain-of-thought, CoT, prompt engineering, stereotypes, discrimination">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>To Compare, or Not to Compare: On Methodological Practices in Evaluating Social Bias</title>
+  <link rel="icon" type="image/x-icon" href="static/images/logo.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero is-orange">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <div class="logo-container" style="margin-bottom: 1.5rem;">
+            <img src="static/images/logo_hd.png" alt="Project Logo" style="max-height:170px; width: auto;">
+          </div>
+
+          <h1 class="title is-1 publication-title">To Compare, or Not to Compare:<br>On Methodological Practices in Evaluating Social Bias</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://insait.ai/dr-federico-marcuzzi/" target="_blank">Federico Marcuzzi</a><sup>1</sup><sup>*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://schwartz-lab-huji.github.io/" target="_blank">Xuefei Ning</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://nics-effalg.com/ningxuefei/" target="_blank">Roy Schwartz</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/head_ukp/index.en.jsp" target="_blank">Iryna Gurevych</a><sup>1,4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup><a href="https://insait.ai/" target="_blank">INSAIT</a>,</span>
+            <span class="author-block"><sup>2</sup><a href="https://www.tsinghua.edu.cn/en/" target="_blank">Tsinghua University</a>,</span>
+            <span class="author-block"><sup>3</sup><a href="https://en.huji.ac.il/" target="_blank">Hebrew University of Jerusalem</a></span>
+            <br>
+            <span class="author-block">
+              <sup>4</sup><a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/index.en.jsp" target="_blank">UKP Lab</a>, 
+              <a href="https://www.tu-darmstadt.de/" target="_blank">TU Darmstadt</a>
+            </span>
+            <span class="eql-cntrb">
+              <small><br><sup>*</sup>Corresponding author: <a href="mailto:federico.marcuzzi@insait.ai">federico.marcuzzi@insait.ai</a></small>
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>ArXiv</span>
+                </a>
+              </span>
+              <!--
+              <span class="link-block">
+                <a href="LINK" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              -->
+              <span class="link-block">
+                <a href="https://github.com/insait-institute/to_cmp_or_not_to_cmp/" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!--
+              <span class="link-block">
+                <a href="HF_LINK" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">🤗</span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+              -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light-orange">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="static/images/example_gh.svg" alt="An overview of our method" style="width: 100%; height: auto; margin-bottom: 2rem;"/>
+        
+        <h2 class="title is-3">Motivation</h2>
+        <div class="content has-text-justified">
+        <p>
+          As Large Language Models are increasingly deployed in critical applications, robustly evaluating their social bias is paramount. However, current literature is highly fragmented, yielding contradictory conclusions on whether techniques like Chain-of-Thought or neutral fallback options mitigate or actually mask prejudice. We argue that these inconsistencies stem from a shared methodological blind spot: existing benchmarks frequently ignore the profound behavioral shift that occurs when evaluating a demographic group in isolation (<strong>ISO</strong>) versus forcing a direct comparison between competing groups (<strong>CMP</strong>).
+        </p>
+        <p>
+          To resolve this, we introduce a unified framework that systematically isolates the impact of these evaluation paradigms. Using the Parity Gap, a metric that measures the model's propensity to favor one of the analyzed options, we conducted a rigorous audit across 19 models ranging from 14B to 120B parameters. By bridging the gap between <em>what</em> is tested and <em>how</em> it is framed, our framework enables reproducible and unambiguous bias evaluations.
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero">
+  <div class="hero-body" style="padding: 0;">
+    <div class="container is-max-desktop">
+      <div class="column has-text-centered">
+        <h2 class="title is-3"><span class="orange-text">Contribution</span> of this work</h2>
+        <div class="has-text-justified">
+          <ul>
+            <li>
+              <div class="caption">
+                As a warning to researchers and practitioners: a context that compares multiple demographic categories or stereotypical options is more likely to influence a stronger model preference than an isolated interaction. Then, we show that this stronger effect scales positively with model size, meaning larger architectures display increased discrimination rather than mitigating it.
+              </div>
+            </li>
+            <li>
+              <div class="caption">
+                This heightened preference in comparative setting is not alleviated by neutral fallback options, but is exacerbated by Chain-of-Thought reasoning, which stabilizes these skewed preferences across prompt variations. Moreover, even when the model claims to select a random answer to avoid bias, these stochastic responses are instead a strong indicator of deterministic preferences.
+              </div>
+            </li>
+            <li>
+              <div class="caption">
+                A suite of 9 standardized benchmarks to systematically evaluate social bias in Large Language Models across multiple axes, including the ISO versus CMP setting, the presence or absence of CoT, prompt variations, and the inclusion of neutral options. This includes new sets of questions derived from existing benchmarks, specifically tailored for both isolated and comparative settings.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span class="orange-text">Finding 1:</span> The Paradigm Gap (ISO vs. CMP)</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our systematic evaluation across 19 models reveals a stark paradigm gap between the two evaluation settings. While language models demonstrate an almost entirely unbiased behavior under the Isolated (ISO) format, the exact same architectures trigger strong stereotypical preferences, discrimaniton and hidden biases when evaluated under Comparative (CMP) constraints. This indicates that comparative settings act as aggressive catalysts for hidden prejudice.
+          </p>
+          <img src="static/images/reddit_bias_GEN_gender_1.svg" alt="Paradigm Gap Results" style="width: 100%; height: auto; margin-top: 1rem;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span class="orange-text">Finding 2:</span> The Role of Contextual Ambiguity</h2>
+        <div class="content has-text-justified">
+          <p>
+            The massive behavioral shift between ISO and CMP paradigms is fundamentally driven by the absence of contextual information. When prompts contain explicit, disambiguating facts that support a correct answer, the forced-choice paradigm no longer acts as a catalyst for social discrimination, and models remain anchored to factual data, significantly reducing model prefecne in CMP setting.
+          </p>
+          <div class="columns" style="margin-top: 1rem;">
+            <div class="column">
+              <img src="static/images/bbq_GEN_amb_1.svg" alt="BBQ Ambiguous" style="width: 100%; height: auto;">
+              <div class="fig-caption">BBQ ambiguous split</div>
+            </div>
+            <div class="column">
+              <img src="static/images/bbq_GEN_disamb_1.svg" alt="BBQ Disambiguous" style="width: 100%; height: auto;">
+              <div class="fig-caption">BBQ disambiguated split</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span class="orange-text">Finding 3:</span> Chain-of-Thought Amplifies Bias</h2>
+        <div class="content has-text-justified">
+          <p>
+            Contrary to standard literature assumptions stating that step-by-step reasoning acts as a mitigation strategy, Chain-of-Thought (CoT) prompting aggressively increases the parity gap in comparative settings, suggesting that when forced to compare, CoT can lead the model to reason toward nuanced details of stereotypes and provide a biased answer. Furthermore, across 54 prompt variations, CoT stabilizes these skewed preferences, drastically reducing result variability.
+          </p>
+          <div class="columns" style="margin-top: 1rem;">
+            <div class="column">
+              <img src="static/images/cot_vs_nocot_var_bbq_GEN_gender_1.svg" alt="CoT Variance Reddit" style="width: 100%; height: auto;">
+              <div class="fig-caption">BBQ ambiguous split</div>
+            </div>
+            <div class="column">
+              <img src="static/images/cot_vs_nocot_var_reddit_bias_GEN_gender_1.svg" alt="CoT Variance BBQ" style="width: 100%; height: auto;">
+              <div class="fig-caption">RedditBias</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span class="orange-text">Finding 4:</span> "Random" Answers Hide Prejudice</h2>
+        <div class="content has-text-justified">
+          <p>
+            Even when language models explicitly state they are choosing an option randomly (left), or when they are explicitly instructed to randomize their selection under comparative constraints (right), their final decisions are far from random. The outputs manifest as a deterministic reflection of systemic bias instead of showing true stochastic neutrality.
+          </p>
+          <div class="columns" style="margin-top: 1rem;">
+            <div class="column">
+              <img src="static/images/random_claim.svg" alt="Random Claim" style="width: 97.5%; height: auto;">
+              <div class="fig-caption">Percentage of times the model selects the same answer while claiming to answer at random.</div>
+            </div>
+            <div class="column">
+              <img src="static/images/forced_random.svg" alt="Forced Random" style="width: 100%; height: auto;">
+              <div class="fig-caption">Model parity gap when explicitly asked to answer randomly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span class="orange-text">Finding 5:</span> The Illusion of Neutral Fallbacks</h2>
+        <div class="content has-text-justified">
+          <p>
+            Allowing models to choose a neutral fallback option creates a misleading sense of safety. Even if the model actively selects the neutral option (e.g., "Prefer not to answer.") when allowed, the underlying preferences do not change. When evaluating choices conditional on a non-neutral decision being made, the underlying preferences remain heavily biased, proving that neutral options mask rather than fix latent prejudices.           </p>
+          <div class="columns" style="margin-top: 1rem;">
+            <div class="column">
+              <img src="static/images/third_Llama-3.1-8B-Instruct_bbq_GEN_1.svg" alt="Llama BBQ" style="width: 100%; height: auto;">
+              <div class="fig-caption">BBQ ambiguous split</div>
+            </div>
+            <div class="column">
+              <img src="static/images/third_Llama-3.1-8B-Instruct_discrim_eval_gen_GEN_1.svg" alt="Llama DiscrimEval" style="width: 100%; height: auto;">
+              <div class="fig-caption">DiscrimEvalGen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span class="orange-text">Finding 6:</span> Comparative Bias Scales with Model Size</h2>
+        <div class="content has-text-justified">
+          <p>
+            The tendency to prefer certain demographic groups or to enforce stereotypical preferences in comparative settings is a systemic issue that scales positively with parameter size. Across various model families, larger models possess a higher capacity to internalize societal biases from training data, making them more prone to aggressive discrimination or perpetuating stereotypes under forced choices
+          </p>
+          <img src="static/images/corr_total_sub_gender_sub_bench_CMP_1.svg" alt="Scaling Effects on Bias" style="width: 100%; height: auto; margin-top: 1rem;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop content">
+    <h2><a href="#citation" class="header-link">Citation</a></h2>
+<pre id="BibTeX">@inproceedings{anonymous2026compare,
+    title        = {To Compare, or Not to Compare: On Methodological Practices in Evaluating Social Bias},
+    author       = {Anonymous},
+    booktitle    = {Anonymous ACL submission},
+    year         = {2026}
+}</pre>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <button class="button is-small is-dark" onclick="copyBibtex()">📋 Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> and on the basis of <a href="https://constrained-diffusion.ai/" target="_blank">constrained-diffusion.ai</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

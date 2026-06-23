@@ -1,0 +1,12 @@
+# TODO TO REMOVE
+
+data_config: &data_config
+  type: "empty"
+
+config:
+  run_id: 1
+  seed: 36
+  benchmark_configs:
+    - name: "empty"
+      type: "empty"
+      data_config: *data_config

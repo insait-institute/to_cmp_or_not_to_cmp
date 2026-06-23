@@ -1,0 +1,57 @@
+# Gold
+:root {
+  --orange-color: #EC963B;
+  --orange-color-light: #ec963b81;
+  --authors_aff: #FFD701;
+  --color-starter: #EC963B;
+}
+
+# Blue
+:root {
+  --orange-color: #3498DB;
+  --orange-color-light: #3498DB80;
+  --authors_aff: #1ABC9C;
+  --color-starter: #3498DB;
+}
+
+# Green
+:root {
+  --orange-color: #2ECC71;
+  --orange-color-light: #2ECC7180;
+  --authors_aff: #A3E635;
+  --color-starter: #2ECC71;
+}
+
+# Purple
+:root {
+  --orange-color: #9B59B6;
+  --orange-color-light: #9B59B680;
+  --authors_aff: #F78DA7;
+  --color-starter: #9B59B6;
+}
+
+# Orange
+:root {
+  --orange-color: #FF7F50;
+  --orange-color-light: #FFB39980;
+  --authors_aff: #FFD700;
+  --color-starter: #FF7F50;
+}
+
+# Light Purple
+:root {
+  --orange-color: #A29BFE; /* Lilla moderno */
+  --orange-color-light: #A29BFE80; 
+  --authors_aff: #FD79A8; /* Rosa vibrante */
+  --color-starter: #A29BFE;
+}
+
+
+# Light Blue
+:root {
+  --orange-color: #74B9FF; /* Azzurro cielo */
+  --orange-color-light: #74B9FF80; 
+  --authors_aff: #FD79A8; /* Il tuo rosa vibrante */
+  --color-starter: #74B9FF;
+}
+
