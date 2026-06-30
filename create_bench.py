@@ -78,7 +78,7 @@ def set_run_params(parser, init_bench, args_list=None):
 
     if init_bench:
         bench = BENCHMARK_REGISTRY[args.bench]
-        out = prep_bech(bench, GlobalBenchmarkSettings.to_dict())
+        out = prep_bech(bench)
         print(out)
 
 if __name__ == "__main__":
