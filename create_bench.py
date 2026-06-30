@@ -71,6 +71,7 @@ def set_run_params(parser, init_bench, args_list=None):
 
     if not GlobalBenchmarkSettings.category and args.bench != "mmlu":
         print("[WARNING] Category is None. Defaulting to 'gender'.")
+        GlobalBenchmarkSettings.category = "gender"
     
     if GlobalBenchmarkSettings.category and args.bench == "mmlu":
         print(f"[WARNING] 'category' is set to '{GlobalBenchmarkSettings.category}', but 'MMLU' benchmark is being used. Defaulting to 'None'.")
