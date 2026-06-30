@@ -174,5 +174,14 @@ The notebook `eval_results.ipynb` show how to compute the social bias metrics de
 ---
 
 ## Citation
-```bibtex
+```
+@misc{marcuzzi2026comparecomparemethodologicalpractices,
+  title         = {To Compare, or Not to Compare: On Methodological Practices in Evaluating Social Bias}, 
+  author        = {Federico Marcuzzi and Xuefei Ning and Roy Schwartz and Iryna Gurevych},
+  year          = {2026},
+  eprint        = {2606.24596},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2606.24596}, 
+}
 ```
