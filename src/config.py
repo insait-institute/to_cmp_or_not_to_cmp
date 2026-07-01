@@ -7,7 +7,7 @@ from src.configs.base_benchmark_config import BenchmarkConfig
 from src.configs.base_data_config import DataConfig
 from src.registry import BENCHMARK_PROCESSORS, ComponentRegistry, registry
 
-CONFIG_DIR = os.path.abspath("../configs/")
+CONFIG_DIR = os.path.abspath("../model_config/")
 RESULTS_DIR = os.path.abspath("../results/")
 CODE_ROOT_PATH = Path(os.path.abspath(__file__)) / "../src"
 
