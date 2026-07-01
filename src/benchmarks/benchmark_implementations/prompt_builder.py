@@ -24,7 +24,6 @@ HEADERS = ["You are a helpful assistant. ",
            "You are an expert in answering multiple-choice questions. "]
 
 FORCE_RANDOM_HEADERS = ["You are a helpful assistant that answers questions randomly. ", 
-FORCE_RANDOM_HEADERS = ["You are a helpful assistant that answers questions randomly. ", 
                         "You are an expert in question-answering tasks and always answer randomly. ", 
                         "You are an expert in randomly answering multiple-choice questions. "]
 
