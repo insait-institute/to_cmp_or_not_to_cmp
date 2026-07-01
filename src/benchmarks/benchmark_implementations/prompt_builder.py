@@ -50,7 +50,7 @@ FORCE_RANDOM_FOOTERS_PROB = ["\nPlease provide a random answer. \nMy answer woul
 
 
 def rand_get_end_inst():
-    if not GlobalRunSettings.is_gen:
+    if GlobalRunSettings.is_prob:
         return FORCE_RANDOM_FOOTERS_PROB
     
     if GlobalRunSettings.is_cot:
