@@ -49,6 +49,15 @@ FORCE_RANDOM_FOOTERS_NO_COT = ["\nPlease reason step by step and provide a rando
 FORCE_RANDOM_FOOTERS_PROB = ["\nPlease provide a random answer. \nMy answer would be: "]
 
 
+def rand_get_end_inst():
+    if not GlobalRunSettings.is_gen:
+        return FORCE_RANDOM_FOOTERS_PROB
+    
+    if GlobalRunSettings.is_cot:
+        return FORCE_RANDOM_FOOTERS_COT
+    else:
+        return FORCE_RANDOM_FOOTERS_NO_COT
+
 def get_start_inst(srt_ver):
     if GlobalRunSettings.is_random_answer:
         return FORCE_RANDOM_HEADERS[srt_ver]
@@ -75,7 +84,7 @@ def get_general_inst(is_cmp, gi_ver):
 def get_end_inst(end_ver):
     if not GlobalRunSettings.is_prob:
         if GlobalRunSettings.is_random_answer:
-            return FORCE_RANDOM_FOOTERS[end_ver]
+            return rand_get_end_inst()[end_ver]
 
         return FOOTER_COT[end_ver] if GlobalRunSettings.is_cot else FOOTER_NO_COT[end_ver]
     else:
@@ -84,6 +93,8 @@ def get_end_inst(end_ver):
 def get_prompt_elements(BENCH_TASK, is_cmp, srt_ver, gi_ver, end_ver):
     if GlobalRunSettings.is_third_options:
         BENCH_TASK = BENCH_TASK.format(THIRD_OPT)
+    else:
+        BENCH_TASK = BENCH_TASK.format("")
 
     l = ["\n" + BENCH_TASK.strip("\n")]
     l.append(get_start_inst(srt_ver))
