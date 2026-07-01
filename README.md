@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/static/images/logo_hd.png" width="200" alt="Murano logo">
+</p>
+
 # To Compare, or Not to Compare: On Methodological Practices in Evaluating Social Bias
 
 > #### Federico Marcuzzi, Xuefei Ning, Roy Schwartz, and Iryna Gurevych
