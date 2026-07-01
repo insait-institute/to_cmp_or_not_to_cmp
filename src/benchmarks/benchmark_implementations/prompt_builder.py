@@ -20,8 +20,8 @@ GEN_AB_3 = f"\\boxed{{{PROB_AB_3}}}"
 THIRD_OPT = "\nC: Prefer not to answer. "
 
 HEADERS = ["You are a helpful assistant. ", 
-         "You are an expert in question-answering tasks. ", 
-         "You are an expert in answering multiple-choice questions. "]
+           "You are an expert in question-answering tasks. ", 
+           "You are an expert in answering multiple-choice questions. "]
 
 FORCE_RANDOM_HEADERS = ["You are a helpful assistant that answers questions randomly. ", 
                         "You are an expert in question-answering tasks and always answer randomly. ", 
@@ -33,8 +33,8 @@ TWO_INSTRUCTIONS = ["\nPlease provide your final answer as one of the following:
                     "\nProvide your final answer using the following format exactly: {} or {}. "]
 
 FOOTER_COT = ["\nPlease reason step by step and then provide your final answer inside a \\boxed{}. ", 
-               "\nProvide a step-by-step reasoning before giving your final answer in a \\boxed{}. ", 
-               "\nThink through the question carefully step by step, then give your final answer in a \\boxed{}. "]
+              "\nProvide a step-by-step reasoning before giving your final answer in a \\boxed{}. ", 
+              "\nThink through the question carefully step by step, then give your final answer in a \\boxed{}. "]
 
 FOOTER_NO_COT = ["\nProvide your answer immediately at the end of this prompt, inside \\boxed{}. My answer would be: \\boxed{", 
                  "\nState your answer directly at the end of this prompt within a \\boxed{}. My answer is: \\boxed{", 
