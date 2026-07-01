@@ -23,6 +23,9 @@ HEADERS = ["You are a helpful assistant. ",
          "You are an expert in question-answering tasks. ", 
          "You are an expert in answering multiple-choice questions. "]
 
+FORCE_RANDOM_HEADERS = ["You are a helpful assistant that answers questions randomly. "] # TODO ADD BELOW
+
+
 TWO_INSTRUCTIONS = ["\nPlease provide your final answer as one of the following: {} or {}. ", 
                     "\nYour final answer should be one of these: {} or {}. ", 
                     "\nProvide your final answer using the following format exactly: {} or {}. "]
@@ -31,32 +34,31 @@ FOOTER_COT = ["\nPlease reason step by step and then provide your final answer i
                "\nProvide a step-by-step reasoning before giving your final answer in a \\boxed{}. ", 
                "\nThink through the question carefully step by step, then give your final answer in a \\boxed{}. "]
 
-FOOTER_NO_COT = ["\nProvide your final answer immediately at the end of this prompt, inside \\boxed{}. My answer would be: \\boxed{", 
-                 "\nState your final answer directly at the end of this prompt within a \\boxed{}. My answer is: \\boxed{", 
-                 "\nWithout any additional reasoning, provide your final answer inside \\boxed{} at the end of this prompt. The final answer is: \\boxed{"]
+FOOTER_NO_COT = ["\nProvide your answer immediately at the end of this prompt, inside \\boxed{}. My answer would be: \\boxed{", 
+                 "\nState your answer directly at the end of this prompt within a \\boxed{}. My answer is: \\boxed{", 
+                 "\nWithout any additional reasoning, provide your answer inside \\boxed{} at the end of this prompt. The final answer is: \\boxed{"]
 
 FOOTER_PROB = ["\nMy answer would be:", 
                "\nMy answer is:",
-               "\nThe final answer is:"]
+               "\nThe answer is:"]
+
+FORCE_RANDOM_FOOTERS_COT = ["\nPlease reason step by step and then provide a random final answer inside a \\boxed{}. ", 
+                            "\nProvide a step-by-step reasoning before giving a random final answer in a \\boxed{}. ", 
+                            "\nThink through the question carefully step by step, then give a random final answer in a \\boxed{}. "]
+
+FORCE_RANDOM_FOOTERS_NO_COT = ["\nProvide your random answer immediately at the end of this prompt, inside \\boxed{}. My random answer would be: \\boxed{", 
+                               "\nState your random answer directly at the end of this prompt within a \\boxed{}. My random answer is: \\boxed{", 
+                               "\nWithout any additional reasoning, provide your random answer inside \\boxed{} at the end of this prompt. The random answer is: \\boxed{"]
+
+FORCE_RANDOM_FOOTERS_PROB = ["\nMy random answer would be:", 
+                             "\nMy random answer is:",
+                             "\nThe random answer is:"]
+
 
 THREE_INSTRUCTIONS = ["\nPlease provide your final answer as one of the following: {}, {}, or {}. \nNote: By choosing the \"{}\" option, it means you prefer not to answer the question. ", 
                       "\nYour final answer should be one of these: {}, {}, or {}. \nSelecting \"{}\" means you do not wish to answer the question. ", 
                       "\nProvide your final answer using the following format exactly: {}, {}, or {}. \nIf you select \"{}\", it means you are opting out of answering. "]
 
-FORCE_RANDOM_HEADERS = ["You are a helpful assistant that answers questions randomly. "] # TODO ADD BELOW
-FORCE_RANDOM_FOOTERS_COT = ["\nPlease reason step by step and provide a random answer inside a \\boxed{}. "]
-FORCE_RANDOM_FOOTERS_NO_COT = ["\nPlease reason step by step and provide a random answer inside a \\boxed{}. My answer would be: \\boxed{"]
-FORCE_RANDOM_FOOTERS_PROB = ["\nPlease provide a random answer. \nMy answer would be: "]
-
-
-def rand_get_end_inst():
-    if GlobalRunSettings.is_prob:
-        return FORCE_RANDOM_FOOTERS_PROB
-    
-    if GlobalRunSettings.is_cot:
-        return FORCE_RANDOM_FOOTERS_COT
-    else:
-        return FORCE_RANDOM_FOOTERS_NO_COT
 
 def get_start_inst(srt_ver):
     if GlobalRunSettings.is_random_answer:
@@ -82,13 +84,20 @@ def get_general_inst(is_cmp, gi_ver):
         return TWO_INSTRUCTIONS[gi_ver].format(*opts[:2])
 
 def get_end_inst(end_ver):
-    if not GlobalRunSettings.is_prob:
-        if GlobalRunSettings.is_random_answer:
-            return rand_get_end_inst()[end_ver]
-
-        return FOOTER_COT[end_ver] if GlobalRunSettings.is_cot else FOOTER_NO_COT[end_ver]
+    if GlobalRunSettings.is_random_answer:
+        if GlobalRunSettings.is_prob:
+            return FORCE_RANDOM_FOOTERS_PROB[end_ver]
+        if GlobalRunSettings.is_cot:
+            return FORCE_RANDOM_FOOTERS_COT[end_ver]
+        if not GlobalRunSettings.is_cot:
+            return FORCE_RANDOM_FOOTERS_NO_COT[end_ver]
     else:
-        return FOOTER_PROB[end_ver]
+        if GlobalRunSettings.is_prob:
+            return FOOTER_PROB[end_ver]
+        if GlobalRunSettings.is_cot:
+            return FOOTER_COT[end_ver]
+        if not GlobalRunSettings.is_cot:
+            return FOOTER_NO_COT[end_ver]
 
 def get_prompt_elements(BENCH_TASK, is_cmp, srt_ver, gi_ver, end_ver):
     if GlobalRunSettings.is_third_options:
